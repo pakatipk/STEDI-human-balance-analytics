@@ -195,7 +195,8 @@ Note that serialnumber field from `steptrainer_landing` is renamed to s_serialnu
 8. Create Glue Table `machine_learning_curated` that has each of the Step Trainer Readings, and the associated accelerometer reading data for the same timestamp, but only for customers who have agreed to share their data
 
   ```bash
-    SELECT * FROM customer_curated data with the accelerometer_trusted data by sensor reading time and timestamps
+    SELECT DISDINCT * FROM customer_curated c \
+           JOIN accelerometer_trusted a ON a.sensorreadings = c.timestamps
   ```
 
 
